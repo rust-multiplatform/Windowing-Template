@@ -195,7 +195,7 @@ To use GitLab CI we mirror our repository from GitHub to GitLab.
 
 Currently, we are only building `platform_linux`. Other platforms should be possible.
 
-[![pipeline status](https://gitlab.com/rust-multiplatform/windowing-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/windowing-template/-/commits/main) 
+[![pipeline status](https://gitlab.com/rust-multiplatform/windowing-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/windowing-template/-/commits/main)
 
 ### CI Platform: BitBucket Pipeline
 
