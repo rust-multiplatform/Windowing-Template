@@ -13,6 +13,6 @@ jobs:
     - run: |
         git clone --mirror https://github.com/rust-multiplatform/Base-Project-Template mirror_repo
         cd mirror_repo
-        git push --mirror https://sakul6499:$GITLAB_TOKEN@gitlab.com/rust-multiplatform/base-project-template.git
+        git push --mirror https://sakul6499:$GITLAB_TOKEN@gitlab.com/rust-multiplatform/windowing-template.git
       env:
         GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
