@@ -1,15 +1,23 @@
-# Rust Multi-Platform Base Project Template
+# Rust Multi-Platform: Windowing Template
 
 > ⚠️ THIS IS A TEMPLATE. ⚠️
 
-This project is supported by the following platforms:
+This project is supported by the following target platforms:
 
-- [ ] Platform: Windows  
-- [ ] Platform: Linux  
-- [ ] Platform: macOS  
-- [ ] Platform: Android  
-- [ ] Platform: iOS  
-- [ ] Platform: WebAssembly (WASM)
+- ✅ Platform: Windows  
+- ✅ Platform: Linux  
+- ✅ Platform: macOS  
+- ✅ Platform: Android  
+- ✅ Platform: iOS  
+- ✅ Platform: WebAssembly (⚠️ Only the WASM & JS side, still needs a web-server or bundler and HTML/CSS part)
+
+## Desktop Platforms (Windows / Linux / macOS)
+
+![Desktop Platform](.github/images/desktop_platform.png "Desktop Platform")
+
+## Mobile Platforms (iOS / Android)
+
+## Web (WebAssembly)
 
 To use this project simply fork it (button in top right corner) into your own namespace.  
 If you need some more advanced setup check out the [forking guide](FORKING.md).
@@ -205,8 +213,10 @@ The pipelines are available at: [BitBucket Mirror](https://bitbucket.org/rust-mu
 
 ### CI Platform: TeamCity
 
-Build: ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Build/statusIcon.svg)  
-Test: ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Test/statusIcon.svg)
+| Pipeline | Status Badge |
+| - | - |
+| Build | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Build/statusIcon.svg) |
+| Test | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Test/statusIcon.svg) |
 
 To use [TeamCity](https://www.jetbrains.com/teamcity/) you either have to host your own Server, subscribe for a hosted (TeamCity Cloud) server or apply for your [OSS project being added for free](https://blog.jetbrains.com/teamcity/2016/10/hosted-teamcity-for-open-source-a-new-home/).
 
