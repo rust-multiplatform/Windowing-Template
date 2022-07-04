@@ -173,7 +173,7 @@ Each hast their own badge.
 
 On CircleCI we also support each package, but we only have one badge for the whole pipeline.
 
-[![CircleCI](https://circleci.com/gh/rust-multiplatform/Base-Project-Template/tree/main.svg?style=svg)](https://circleci.com/gh/rust-multiplatform/Base-Project-Template/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/rust-multiplatform/Windowing-Template/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/rust-multiplatform/Windowing-Template/tree/main)
 
 > Note that a failure here can also mean we run out of credits. Happens too often unfortunately!
 
