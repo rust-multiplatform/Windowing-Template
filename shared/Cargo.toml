@@ -9,3 +9,4 @@ repository = "https://github.com/rust-multiplatform/Base-Project-Template.git"
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
+winit = "0.26.1"
