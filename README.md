@@ -1,15 +1,14 @@
-# Rust Multi-Platform Base Project Template
+# Rust Multi-Platform: winit Template
 
 > ⚠️ THIS IS A TEMPLATE. ⚠️
 
-This project is supported by the following platforms:
+## Desktop Platforms (Windows / Linux / macOS)
 
-- [ ] Platform: Windows  
-- [ ] Platform: Linux  
-- [ ] Platform: macOS  
-- [ ] Platform: Android  
-- [ ] Platform: iOS  
-- [ ] Platform: WebAssembly (WASM)
+![Desktop Platform](.github/images/desktop_platform.png "Desktop Platform")
+
+## Mobile Platforms (iOS / Android)
+
+## Web (WebAssembly)
 
 To use this project simply fork it (button in top right corner) into your own namespace.  
 If you need some more advanced setup check out the [forking guide](FORKING.md).
