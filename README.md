@@ -192,13 +192,13 @@ In fact I do have private projects on there.
 
 On CircleCI we also support each package, but we only have one badge for the whole pipeline.
 
-[![CircleCI](https://circleci.com/gh/rust-multiplatform/Base-Project-Template/tree/main.svg?style=svg)](https://circleci.com/gh/rust-multiplatform/Base-Project-Template/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/rust-multiplatform/Windowing-Template/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/rust-multiplatform/Windowing-Template/tree/main)
 
 > Note that a failure here can also mean we run out of credits. Happens too often unfortunately!
 
 ### CI Platform: Travis
 
-[![Build Status](https://app.travis-ci.com/rust-multiplatform/Base-Project-Template.svg?branch=main)](https://app.travis-ci.com/rust-multiplatform/Base-Project-Template)
+[![Build Status](https://app.travis-ci.com/rust-multiplatform/Windowing-Template.svg?branch=main)](https://app.travis-ci.com/rust-multiplatform/Windowing-Template)
 
 On Travis we only build for Windows, macOS and Linux.
 Android and iOS _would_ be possible, however it requires a lot more work.
@@ -214,7 +214,7 @@ To use GitLab CI we mirror our repository from GitHub to GitLab.
 
 Currently, we are only building `platform_linux`. Other platforms should be possible.
 
-[![pipeline status](https://gitlab.com/rust-multiplatform/base-project-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/base-project-template/-/commits/main)
+[![pipeline status](https://gitlab.com/rust-multiplatform/windowing-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/windowing-template/-/commits/main)
 
 ### CI Platform: BitBucket Pipeline
 
@@ -224,10 +224,10 @@ The pipelines are available at: [BitBucket Mirror](https://bitbucket.org/rust-mu
 
 ### CI Platform: TeamCity
 
-| Pipeline | Status Badge                                                                                                                                                        |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Build    | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_BaseProjectTemplate_Build/statusIcon.svg) |
-| Test     | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_BaseProjectTemplate_Test/statusIcon.svg)   |
+| Pipeline | Status Badge |
+| - | - |
+| Build | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Build/statusIcon.svg) |
+| Test | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Test/statusIcon.svg) |
 
 To use [TeamCity](https://www.jetbrains.com/teamcity/) you either have to host your own Server, subscribe for a hosted (TeamCity Cloud) server or apply for your [OSS project being added for free](https://blog.jetbrains.com/teamcity/2016/10/hosted-teamcity-for-open-source-a-new-home/).
 
