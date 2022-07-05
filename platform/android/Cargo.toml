@@ -53,8 +53,11 @@ max_sdk_version = 30
 # Defaults to `$HOME/.android/debug.keystore` for the `dev` profile. Will ONLY generate a new
 # debug.keystore if this file does NOT exist.
 # A keystore path is always required on the `release` profile.
+[package.metadata.android.signing.dev]
+path = ".android/debug.keystore"
+keystore_password = "android"
 [package.metadata.android.signing.release]
-path = "$HOME/.android/debug.keystore"
+path = ".android/release.keystore"
 keystore_password = "android"
 
 # See https://developer.android.com/guide/topics/manifest/uses-feature-element
