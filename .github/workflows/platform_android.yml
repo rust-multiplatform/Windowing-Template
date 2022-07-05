@@ -45,9 +45,13 @@ jobs:
 
     # KeyStore Setup
     - name: Generate Debug KeyStore
-      run: cd platform/android/ && mkdir .android && cd .android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore debug.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
+      run: |
+        cd platform/android/ && mkdir .android
+        cd cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore debug.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
     - name: Generate Release KeyStore
-      run: cd platform/android/ && mkdir .android && cd .android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
+      run: | 
+        cd platform/android/ && mkdir .android
+        cd cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
 
     - name: Check
       run: cargo apk check --verbose --package platform_android
