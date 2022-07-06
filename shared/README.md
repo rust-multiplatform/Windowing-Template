@@ -1,6 +1,6 @@
 # Crate/Library: Shared
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml)
 
 This is our **one** crate that holds all the shared code for our Cross/Multi-platform apps.  
 This crate will be compiled as a library by each platform in their target architecture and called from each platform.

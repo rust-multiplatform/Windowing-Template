@@ -1,6 +1,6 @@
 # Platform: Android
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_android.yml)
 
 This is the platform-specific project for the platform Android.  
 Make sure to check the shared crate as we depend on it.
