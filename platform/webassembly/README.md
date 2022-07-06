@@ -1,6 +1,6 @@
 # Platform: WebAssembly
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_webassembly.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_webassembly.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_webassembly.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_webassembly.yml)
 
 This is the platform-specific project for the platform WebAssembly.  
 Make sure to check the shared crate as we depend on it.

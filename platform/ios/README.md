@@ -1,6 +1,6 @@
 # Platform: iOS
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml)
 
 This is the platform-specific project for the platform iOS.  
 Make sure to check the shared crate as we depend on it.

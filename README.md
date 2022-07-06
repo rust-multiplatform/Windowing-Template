@@ -1,4 +1,4 @@
-# Rust Multi-Platform: Windowing Template
+# Rust Multi-Platform Windowing Template
 
 > ⚠️ THIS IS A TEMPLATE. ⚠️
 
@@ -17,7 +17,11 @@ This project is supported by the following target platforms:
 
 ## Mobile Platforms (iOS / Android)
 
+TODO
+
 ## Web (WebAssembly)
+
+TODO
 
 To use this project simply fork it (button in top right corner) into your own namespace.
 If you need some more advanced setup check out the [forking guide](FORKING.md).
@@ -35,17 +39,17 @@ For templates/examples we recommend to also dual-licensing.
 
 ## Project layout
 
-| Folder                                         | Description                                                                                                                         | GitHub Actions                                                                                                                                                                                                                      |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ./                                             | Workspace root; `Cargo.toml` contains all project folders (internal crates)                                                         |                                                                                                                                                                                                                                     |  |  |
-| [platform/](platform/)                         | Platform projects root. Contains every platform this demonstration is supported on incl. instructions on how to build and use them. |                                                                                                                                                                                                                                     |
-| [platform/android/](platform/android/)         | Contains the Android platform project and instructions on how to build this project for Android and run it.                         | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml)         |
-| [platform/ios/](platform/ios/)                 | Contains the iOS platform project and instructions on how to build this project for iOS and run it.                                 | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml)                 |
-| [platform/linux/](platform/linux/)             | Contains the Linux platform project and instructions on how to build this project for Linux and run it.                             | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml)             |
-| [platform/macos/](platform/macos/)             | Contains the macOS platform project and instructions on how to build this project for macOS and run it.                             | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml)             |
-| [platform/windows/](platform/windows/)         | Contains the Windows platform project and instructions on how to build this project for Windows and run it.                         | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml)         |
-| [platform/webassembly/](platform/webassembly/) | Contains the WebAssembly platform project and instructions on how to build this project for Websites and run it.                    | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_webassembly.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_webassembly.yml) |
-| [shared/](shared/)                             | Contains the **shared** code between **all** projects.                                                                              | [![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml)                             |
+| Folder                                         | Description                                                                                                                         | GitHub Actions                                                                                                                                                                                                                |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ./                                             | Workspace root; `Cargo.toml` contains all project folders (internal crates)                                                         |                                                                                                                                                                                                                               |  |  |
+| [platform/](platform/)                         | Platform projects root. Contains every platform this demonstration is supported on incl. instructions on how to build and use them. |                                                                                                                                                                                                                               |
+| [platform/android/](platform/android/)         | Contains the Android platform project and instructions on how to build this project for Android and run it.                         | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_android.yml)         |
+| [platform/ios/](platform/ios/)                 | Contains the iOS platform project and instructions on how to build this project for iOS and run it.                                 | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml)                 |
+| [platform/linux/](platform/linux/)             | Contains the Linux platform project and instructions on how to build this project for Linux and run it.                             | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_linux.yml)             |
+| [platform/macos/](platform/macos/)             | Contains the macOS platform project and instructions on how to build this project for macOS and run it.                             | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_macos.yml)             |
+| [platform/windows/](platform/windows/)         | Contains the Windows platform project and instructions on how to build this project for Windows and run it.                         | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_windows.yml)         |
+| [platform/webassembly/](platform/webassembly/) | Contains the WebAssembly platform project and instructions on how to build this project for Websites and run it.                    | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_webassembly.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_webassembly.yml) |
+| [shared/](shared/)                             | Contains the **shared** code between **all** projects.                                                                              | [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml)                             |
 
 > Note that some pipelines don't cover all platforms/projects, but are building a specific project like `platform_linux`.
 
@@ -167,12 +171,12 @@ This is done to save on build costs/minutes.
 
 ### CI Platform: GitHub Actions
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_android.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_ios.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_linux.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_macos.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml)
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_android.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_android.yml)  
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml)  
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_linux.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_linux.yml)  
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_macos.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_macos.yml)  
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_windows.yml)  
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml)  
 
 On GitHub Actions we have a workflow file per package (platforms & shared).
 Each hast their own badge.
@@ -192,7 +196,7 @@ In fact I do have private projects on there.
 
 On CircleCI we also support each package, but we only have one badge for the whole pipeline.
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/rust-multiplatform/Windowing-Template/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/rust-multiplatform/Windowing-Template/tree/main)
+[![CircleCI](https://circleci.com/gh/rust-multiplatform/Windowing-Template/tree/main.svg?style=svg)](https://circleci.com/gh/rust-multiplatform/Windowing-Template/tree/main)
 
 > Note that a failure here can also mean we run out of credits. Happens too often unfortunately!
 
@@ -214,20 +218,20 @@ To use GitLab CI we mirror our repository from GitHub to GitLab.
 
 Currently, we are only building `platform_linux`. Other platforms should be possible.
 
-[![pipeline status](https://gitlab.com/rust-multiplatform/windowing-template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/windowing-template/-/commits/main)
+[![pipeline status](https://gitlab.com/rust-multiplatform/Windowing-Template/badges/main/pipeline.svg)](https://gitlab.com/rust-multiplatform/Windowing-Template/-/commits/main)
 
 ### CI Platform: BitBucket Pipeline
 
 Unfortunately, BitBucket Pipelines don't have status badges.
 
-The pipelines are available at: [BitBucket Mirror](https://bitbucket.org/rust-multiplatform/base-project-template/)
+The pipelines are available at: [BitBucket Mirror](https://bitbucket.org/rust-multiplatform/Windowing-Template/)
 
 ### CI Platform: TeamCity
 
-| Pipeline | Status Badge |
-| - | - |
-| Build | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Build/statusIcon.svg) |
-| Test | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Test/statusIcon.svg) |
+| Pipeline | Status Badge                                                                                                                                                      |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Build    | ![TeamCity build status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Build/statusIcon.svg) |
+| Test     | ![TeamCity test status](https://teamcity.jetbrains.com/app/rest/builds/buildType:id:OpenSourceProjects_RustMultiplatform_WindowingTemplate_Test/statusIcon.svg)   |
 
 To use [TeamCity](https://www.jetbrains.com/teamcity/) you either have to host your own Server, subscribe for a hosted (TeamCity Cloud) server or apply for your [OSS project being added for free](https://blog.jetbrains.com/teamcity/2016/10/hosted-teamcity-for-open-source-a-new-home/).
 

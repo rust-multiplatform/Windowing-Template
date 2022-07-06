@@ -1,6 +1,6 @@
 # Platform: Windows
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/platform_windows.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_windows.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_windows.yml)
 
 This is the platform-specific project for the platform Windows.  
 Make sure to check the shared crate as we depend on it.
