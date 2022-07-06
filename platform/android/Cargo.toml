@@ -3,16 +3,17 @@ name = "platform_android"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/rust-multiplatform/Base-Project-Template.git"
+repository = "https://github.com/rust-multiplatform/Windowing-Template.git"
+
 [lib]
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
-# Internal Crates
 shared = { path = "../../shared" }
 
-# External Crates
-ndk-glue = { version = "0.6", features = ["logger"] }
+# This dependency will only be included when targeting Android
+[target.'cfg(target_os = "android")'.dependencies]
+ndk-glue = { version = "0.5", features = ["logger"] }
 
 [package.metadata.android]
 # Specifies the package property of the manifest.
@@ -44,12 +45,20 @@ apk_name = "Hello-Rust"
 # runtime_libs = "path/to/libs_folder"
 
 # See https://developer.android.com/guide/topics/manifest/uses-sdk-element
-#
-# Defaults to a `min_sdk_version` of 23 and `target_sdk_version` of 30 (or lower if the detected NDK doesn't support this).
 [package.metadata.android.sdk]
 min_sdk_version = 23
 target_sdk_version = 30
-max_sdk_version = 29
+max_sdk_version = 30
+
+# Defaults to `$HOME/.android/debug.keystore` for the `dev` profile. Will ONLY generate a new
+# debug.keystore if this file does NOT exist.
+# A keystore path is always required on the `release` profile.
+[package.metadata.android.signing.dev]
+path = ".android/debug.keystore"
+keystore_password = "android"
+[package.metadata.android.signing.release]
+path = ".android/release.keystore"
+keystore_password = "android"
 
 # See https://developer.android.com/guide/topics/manifest/uses-feature-element
 #
@@ -76,7 +85,7 @@ icon = "@mipmap/ic_launcher"
 # See https://developer.android.com/guide/topics/manifest/application-element#label
 #
 # Defaults to the compiled artifact's name.
-label = "Hello-Rust"
+label = "platform-android"
 
 # See https://developer.android.com/guide/topics/manifest/activity-element#config
 #
@@ -97,4 +106,3 @@ orientation = "landscape"
 #
 # Unset by default, or "true" when targeting Android >= 31 (S and up).
 exported = "true"
-

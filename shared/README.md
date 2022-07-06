@@ -1,6 +1,6 @@
 # Crate/Library: Shared
 
-[![Rust](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Base-Project-Template/actions/workflows/shared.yml)
+[![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/shared.yml)
 
 This is our **one** crate that holds all the shared code for our Cross/Multi-platform apps.  
 This crate will be compiled as a library by each platform in their target architecture and called from each platform.
@@ -29,13 +29,11 @@ In this case we have _some_ non-shared/platform-specific code but overall this s
 
 ## What does this crate do after being called?
 
-This is the most basic of examples: A simple `"Hello World"` or better yet: `"Hello from Rust!"` to the standard output.  
-On Desktop platforms this will open a Terminal/Console printing out the text and exiting.  
-For Android, iOS and WebAssembly this will be logged to LogCat, Device Logs and the Browser Console respectively.  
+A simple window is opened following the example on [winit's docs](https://docs.rs/winit/latest/winit/).  
+This is an empty window with nothing in it.
+The process (apps) stays open until the app is exited (the `X` on most Desktop Systems or killing it on mobile).
 
-**Independent of the platform the app will _exit_ right after being done. Depending on the platform the window (console _or_ app) may close before you even see it.**  
-On Desktop you can call the executable from a terminal either by using the executable in `target/(debug|release|<arch>)/platform_*(.exe)` or using the `cargo run --package platform_<platform>` command.
-For Android, iOS and WebAssembly enable persistent logging and reopen the app/website.
+![Platform Windows](.github/images/platform_windows.png "Platform Windows")
 
 ## Building
 
