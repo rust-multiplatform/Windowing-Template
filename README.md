@@ -17,7 +17,7 @@ This project is supported by the following target platforms:
 
 ## Mobile Platforms (iOS / Android)
 
-TODO
+![Mobile Platform](.github/images/mobile_platform.png)
 
 ## Web (WebAssembly)
 
