@@ -19,10 +19,6 @@ This project is supported by the following target platforms:
 
 ![Mobile Platform](.github/images/mobile_platform.png)
 
-## Web (WebAssembly)
-
-TODO
-
 To use this project simply fork it (button in top right corner) into your own namespace.
 If you need some more advanced setup check out the [forking guide](FORKING.md).
 We also include a checklist for [what to do after forking](FORKING.md#what-is-important-to-do-after-forking).
