@@ -1,7 +1,7 @@
 # Platform: iOS
 
 [![Rust](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml/badge.svg)](https://github.com/rust-multiplatform/Windowing-Template/actions/workflows/platform_ios.yml)
-[![codecov](https://codecov.io/gh/rust-multiplatform/Base-Project-Template/branch/main/graph/badge.svg?token=XpGvuQVirP)](https://codecov.io/gh/rust-multiplatform/Base-Project-Template)
+[![codecov](https://codecov.io/gh/rust-multiplatform/Windowing-Template/branch/main/graph/badge.svg?token=CQTMH3NEUG)](https://codecov.io/gh/rust-multiplatform/Windowing-Template)
 
 This is the platform-specific project for the platform iOS.  
 Make sure to check the shared crate as we depend on it.
