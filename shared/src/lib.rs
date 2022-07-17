@@ -4,6 +4,9 @@ use winit::{
     window::WindowBuilder,
 };
 
+#[cfg(test)]
+mod tests;
+
 pub fn entrypoint() {    
     println!("ENTRYPOINT"); 
     
