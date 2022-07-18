@@ -63,6 +63,7 @@ object Build : BuildType({
             param("cargo-toolchain", "stable")
             param("cargo-verbosity", "--verbose")
             param("cargo-bench-package", "platform_linux")
+            param("cargo-build-no-default-features", "true")
             param("cargo-bench-arguments", "--release")
             param("cargo-command", "build")
         }
