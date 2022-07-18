@@ -98,6 +98,7 @@ object Test : BuildType({
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             param("cargo-test-no-fail-fast", "true")
             param("cargo-test-package", "platform_linux")
+            param("cargo-test-no-default-features", "true")
             param("cargo-toolchain", "stable")
             param("cargo-verbosity", "--verbose")
             param("cargo-command", "test")
