@@ -16,14 +16,14 @@ pub fn entrypoint() {
     let window = WindowBuilder::new().build(&event_loop).unwrap();
     
     event_loop.run(move |event, _, control_flow| {
+        // Chose EITHER of the two:
         // ControlFlow::Poll continuously runs the event loop, even if the OS hasn't
         // dispatched any events. This is ideal for games and similar applications.
         *control_flow = ControlFlow::Poll;
-    
         // ControlFlow::Wait pauses the event loop if no events are available to process.
         // This is ideal for non-game applications that only update in response to user
         // input, and uses significantly less power/CPU time than ControlFlow::Poll.
-        *control_flow = ControlFlow::Wait;
+        // *control_flow = ControlFlow::Wait;
     
         match event {
             Event::WindowEvent {
