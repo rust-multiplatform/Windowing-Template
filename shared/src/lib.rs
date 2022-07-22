@@ -11,7 +11,8 @@ mod tests;
 
 pub fn entrypoint() {    
     println!("ENTRYPOINT"); 
-    
+
+    // Event Loop, takes care of any events that may occur such as render requests and keyboard inputs
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new().build(&event_loop).unwrap();
     
