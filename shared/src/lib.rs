@@ -14,6 +14,7 @@ pub fn entrypoint() {
 
     // Event Loop, takes care of any events that may occur such as render requests and keyboard inputs
     let event_loop = EventLoop::new();
+    // Creates a window and attach our event loop to it
     let window = WindowBuilder::new().build(&event_loop).unwrap();
     
     event_loop.run(move |event, _, control_flow| {
