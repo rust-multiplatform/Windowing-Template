@@ -32,7 +32,9 @@ pub fn entrypoint() {
                 event: WindowEvent::CloseRequested,
                 ..
             } => {
-                println!("The close button was pressed; stopping");
+                // Close request (i.e. X button on windows, app got closed, etc.)
+
+                println!("A close request was submitted. Shutting down ...");
                 *control_flow = ControlFlow::Exit
             },
             Event::MainEventsCleared => {
@@ -46,6 +48,8 @@ pub fn entrypoint() {
                 window.request_redraw();
             },
             Event::RedrawRequested(_) => {
+                // Application render code
+
                 // Redraw the application.
                 //
                 // It's preferable for applications that do not render continuously to render in
