@@ -240,6 +240,16 @@ There is the [Docker-OSX](https://github.com/sickcodes/Docker-OSX) project which
 
 Windows builds would also be much easier if we'd have an agent for it.
 
+### CI Platform: Jenkins
+
+[![Build Status](https://jenkins.sakul6499.de/job/Rust-Multiplatform/job/Base-Project-Template/job/main/badge/icon)](https://jenkins.sakul6499.de/job/Rust-Multiplatform/job/Base-Project-Template/job/main/)
+
+[Jenkins](https://www.jenkins.io/) is another multi-purpose self-hosted CI platform.
+
+The configuration file can be found under `.jenkins/Jenkinsfile` and includes both: A Docker build version using the official [Rust Docker Image](https://hub.docker.com/_/rust) and a native installation (local Agent with [Rustup.rs](https://rustup.rs/) installed).  
+**You won't need both**, exclude whatever configuration you won't need.
+
+
 ## Coverage
 
 A combination of [grcov](https://github.com/mozilla/grcov) and [codecov.io](https://codecov.io) is used to provide code-to-test coverage.  

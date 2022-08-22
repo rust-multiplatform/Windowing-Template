@@ -1,4 +1,4 @@
-# To save on build minutes and to reduce complexity 
+# To save on build minutes and to reduce complexity
 # we are **only** building for the current host architecture for Windows, Linux and macOS.
 # Android and iOS are exceptions here.
 #
@@ -8,7 +8,7 @@
 
 version: 2.1
 
-orbs: 
+orbs:
   windows: circleci/windows@5.0.0
 
 workflows:
@@ -25,11 +25,13 @@ workflows:
 jobs:
   platform_linux:
     docker:
-      - image: cimg/rust:1.62
+      - image: cimg/rust:1.63
 
     steps:
       - checkout
       - run: cargo --version
+
+      - run: sudo apt-get install -y libfontconfig1-dev
 
       # Build
       - run:
@@ -61,7 +63,7 @@ jobs:
       - checkout
 
       # Setup
-      - run: 
+      - run:
           name: Install Rust
           command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
       - run: cargo --version
@@ -89,12 +91,12 @@ jobs:
           path: target/release/platform_macos
 
   platform_windows:
-    executor: 
+    executor:
       name: windows/default
 
     steps:
       - checkout
-      
+
       # Setup
       - run:
           name: Download RustUp
@@ -102,29 +104,36 @@ jobs:
       - run:
           name: Install Rust
           command: ./rustup-init.exe --default-toolchain stable --profile complete -y
-      - run: cargo --version
+      - run:
+          name: Cargo version
+          command: |
+            & "$HOME/.cargo/bin/cargo.exe" --version
 
       # Build
       - run:
           name: Build (debug)
-          command: cargo build --package platform_windows
+          command: |
+            & "$HOME/.cargo/bin/cargo.exe" build --package platform_windows
           environment:
             CARGO_NET_GIT_FETCH_WITH_CLI: "true"
       - run:
           name: Build (release)
-          command: cargo build --package platform_windows --release
+          command: |
+            & "$HOME/.cargo/bin/cargo.exe" build --package platform_windows --release
           environment:
             CARGO_NET_GIT_FETCH_WITH_CLI: "true"
 
       # Tests
       - run:
           name: Run Tests (debug)
-          command: cargo test --no-default-features --no-fail-fast --package platform_windows
+          command: |
+            & "$HOME/.cargo/bin/cargo.exe" test --no-default-features --no-fail-fast --package platform_windows
           environment:
             CARGO_NET_GIT_FETCH_WITH_CLI: "true"
       - run:
           name: Run Tests (release)
-          command: cargo test --no-default-features --no-fail-fast --package platform_windows --release
+          command: |
+            & "$HOME/.cargo/bin/cargo.exe" test --no-default-features --no-fail-fast --package platform_windows --release
           environment:
             CARGO_NET_GIT_FETCH_WITH_CLI: "true"
 
@@ -135,43 +144,43 @@ jobs:
           path: target/release/platform_windows.exe
 
   platform_android:
-    docker:      
+    docker:
       - image: androidsdk/android-30
 
     steps:
       - checkout
 
       # Setup
-      - run: 
+      - run:
           name: Install GCC
           command: apt-get update && apt-get install -y gcc
-      - run: 
+      - run:
           name: Install Android SDKs, NDKs and tools
           command: sdkmanager 'platforms;android-30' 'platform-tools' 'ndk;24.0.8215888' 'build-tools;33.0.0'
-      - run: 
+      - run:
           name: Install Rust
           command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
       - run: source $HOME/.cargo/env && cargo --version
-      - run: 
+      - run:
           name: Install Rust targets
           command: source $HOME/.cargo/env && rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
-      - run: 
+      - run:
           name: Install cargo-apk
           command: source $HOME/.cargo/env && cargo install cargo-apk
-      
-    # KeyStore Setup
-      - run: 
+
+      # KeyStore Setup
+      - run:
           name: Generate Debug KeyStore
           command: cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore debug.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
-      - run: 
+      - run:
           name: Generate Release KeyStore
           command: cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
 
       # Build
-      - run: 
+      - run:
           name: Build (debug)
           command: unset ANDROID_HOME && export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/24.0.8215888" && source $HOME/.cargo/env && cargo apk build --verbose --package platform_android
-      - run: 
+      - run:
           name: Build (release)
           command: unset ANDROID_HOME && export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/24.0.8215888" && source $HOME/.cargo/env && cargo apk build --verbose --package platform_android --release
 
@@ -189,7 +198,7 @@ jobs:
 
     steps:
       - checkout
-      
+
       # Setup
       - run:
           name: Install Brew
@@ -200,7 +209,7 @@ jobs:
       - run:
           name: Install JQ
           command: brew install jq
-      - run: 
+      - run:
           name: Install Rust
           command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
       - run:
@@ -242,10 +251,10 @@ jobs:
           path: target/xcodegen/platform_ios/build/Build/Products/Debug-iphonesimulator
       - store_artifacts:
           path: target/xcodegen/platform_ios/build/Build/Products/Release-iphonesimulator
-  
+
   platform_webassembly:
     docker:
-      - image: cimg/rust:1.62
+      - image: cimg/rust:1.63
 
     steps:
       - checkout
@@ -254,7 +263,7 @@ jobs:
       # Setup
       - run:
           name: Install WASM-Pack
-          command: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh 
+          command: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - run: wasm-pack --version
 
       # DEBUG Build -> Upload
@@ -273,16 +282,18 @@ jobs:
 
       # Tests
       - run:
-          name: Run Tests 
+          name: Run Tests
           command: wasm-pack test --node platform/webassembly/ --package platform_webassembly
 
   shared:
     docker:
-      - image: cimg/rust:1.62
+      - image: cimg/rust:1.63
 
     steps:
       - checkout
       - run: cargo --version
+        
+      - run: sudo apt-get install -y libfontconfig1-dev
 
       # Build
       - run:
