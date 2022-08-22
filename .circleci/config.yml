@@ -30,6 +30,8 @@ jobs:
     steps:
       - checkout
       - run: cargo --version
+        
+      - run: apt-get install -y fontconfig
 
       # Build
       - run:
