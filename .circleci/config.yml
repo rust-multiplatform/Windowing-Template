@@ -292,6 +292,8 @@ jobs:
     steps:
       - checkout
       - run: cargo --version
+        
+      - run: sudo apt-get install -y libfontconfig1-dev
 
       # Build
       - run:
