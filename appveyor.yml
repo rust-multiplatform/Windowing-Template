@@ -13,5 +13,5 @@ build_script:
   - sh: cargo build --release
 
 after_build:
-  - sh: cargo test
-  - sh: cargo test --release
+  - sh: cargo test --no-default-features
+  - sh: cargo test --no-default-features --release
