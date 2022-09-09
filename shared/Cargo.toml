@@ -6,8 +6,9 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/rust-multiplatform/Windowing-Template.git"
 
 [features]
-default = ["all-tests"]
-ui-tests = []
+default = ["all-tests", "ui"]
+ui = []
+ui-tests = ["ui"]
 all-tests = ["ui-tests"]
 
 [lib]
