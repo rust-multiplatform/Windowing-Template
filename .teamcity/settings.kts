@@ -60,6 +60,7 @@ object Build : BuildType({
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             param("cargo-build-package", "platform_linux")
             param("cargo-build-release", "true")
+            param("cargo-test-no-default-features", "true")
             param("cargo-toolchain", "stable")
             param("cargo-verbosity", "--verbose")
             param("cargo-bench-package", "platform_linux")
