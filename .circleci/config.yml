@@ -293,7 +293,7 @@ jobs:
       - checkout
       - run: cargo --version
         
-      - run: sudo apt-get install -y libfontconfig1-dev
+      - run: sudo apt-get update && sudo apt-get install -y libfontconfig1-dev
 
       # Build
       - run:
