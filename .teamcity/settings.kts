@@ -27,7 +27,6 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2022.10"
 
 project {
-
     buildType(Test)
     buildType(Build)
 }
@@ -40,10 +39,11 @@ object Build : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
-    }
+    } 
 
     steps {
         step {
+<<<<<<< HEAD
             name = "Build (Debug)"
             type = "cargo"
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
@@ -56,6 +56,9 @@ object Build : BuildType({
         }
         step {
             name = "Build (Release)"
+=======
+            name = "Build"
+>>>>>>> upstream/main
             type = "cargo"
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             param("cargo-build-package", "platform_linux")
@@ -94,18 +97,7 @@ object Test : BuildType({
 
     steps {
         step {
-            name = "Test (Debug)"
-            type = "cargo"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            param("cargo-test-no-fail-fast", "true")
-            param("cargo-test-package", "platform_linux")
-            param("cargo-test-no-default-features", "true")
-            param("cargo-toolchain", "stable")
-            param("cargo-verbosity", "--verbose")
-            param("cargo-command", "test")
-        }
-        step {
-            name = "Test (Release)"
+            name = "Tests"
             type = "cargo"
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             param("cargo-test-no-fail-fast", "true")
