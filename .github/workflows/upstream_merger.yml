@@ -17,6 +17,7 @@
 #       matrix:
 #         repository: [rust-multiplatform/Windowing-Template, rust-multiplatform/SlintUI-Template, rust-multiplatform/Base-Engine-Library, rust-multiplatform/Bevy-Template, rust-multiplatform/Graphical-Engine-Template, rust-multiplatform/Compute-Engine-Template]
 
+<<<<<<< HEAD
 #     steps:
 #       - name: Merge upstream
 #         run: |
@@ -31,6 +32,18 @@
 #           chmod 0600 ~/.ssh/key
 #           eval `ssh-agent -s`
 #           ssh-add ~/.ssh/key
+=======
+          echo "> Setting git ..."
+          git config --global user.name "GitHub CI"
+          git config --global user.email "dev@sakul-flee.de"
+          git config --global pull.rebase false
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/key
+          chmod 0700 ~/.ssh
+          chmod 0600 ~/.ssh/key
+          eval `ssh-agent -s`
+          ssh-add ~/.ssh/key
+>>>>>>> upstream/main
           
 #           echo "> Clone repository"
 #           git clone --recursive git@github.com:${{ matrix.repository }} ${{ matrix.repository }}
@@ -44,6 +57,7 @@
 #           echo "> Fetching ..."
 #           git fetch --all
 
+<<<<<<< HEAD
 #           echo "> Creating merge branch"
 #           BRANCH="upstream-merge/$(date +%d.%m.%Y-%H-%M-%S)"
 #           git checkout -b $BRANCH
@@ -56,3 +70,16 @@
 #           git add . || true
 #           git commit -m "Upstream merge ($(date +%d.%m.%Y_%H:%M:%S))" || true
 #           git push origin $BRANCH
+=======
+          echo "> Creating merge branch"
+          git checkout -b upstream || true
+          git switch upstream
+
+          echo "> Merging ..."
+          git merge upstream/main origin/upstream || true
+
+          echo "> Pushing ..."
+          git add . || true
+          git commit -m "Upstream merge ($(date +%d.%m.%Y_%H:%M:%S))" || true
+          git push origin upstream
+>>>>>>> upstream/main
