@@ -9,11 +9,7 @@
 version: 2.1
 
 orbs:
-<<<<<<< HEAD
-  windows: circleci/windows@5.0.0
-=======
     windows: circleci/windows@5.0.0
->>>>>>> upstream/main
 
 workflows:
     build:
@@ -35,22 +31,10 @@ jobs:
             - checkout
             - run: cargo --version
 
-<<<<<<< HEAD
-      - run: sudo apt-get update && sudo apt-get install -y libfontconfig1-dev
-
-      # Build
-      - run:
-          name: Build (debug)
-          command: cargo build --package platform_linux
-      - run:
-          name: Build (release)
-          command: cargo build --package platform_linux --release
-=======
             # Build
             - run:
                   name: Build
                   command: cargo build --package platform_linux --release
->>>>>>> upstream/main
 
             # Tests
             - run:
@@ -68,19 +52,11 @@ jobs:
         steps:
             - checkout
 
-<<<<<<< HEAD
-      # Setup
-      - run:
-          name: Install Rust
-          command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
-      - run: cargo --version
-=======
             # Setup
             - run:
                   name: Install Rust
                   command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
             - run: cargo --version
->>>>>>> upstream/main
 
             # Build
             - run:
@@ -96,33 +72,12 @@ jobs:
             - store_artifacts:
                   path: target/release/platform_macos
 
-<<<<<<< HEAD
-  platform_windows:
-    executor:
-      name: windows/default
-
-    steps:
-      - checkout
-
-      # Setup
-      - run:
-          name: Download RustUp
-          command: Invoke-WebRequest https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe -OutFile rustup-init.exe
-      - run:
-          name: Install Rust
-          command: ./rustup-init.exe --default-toolchain stable --profile complete -y
-      - run:
-          name: Cargo version
-          command: |
-            & "$HOME/.cargo/bin/cargo.exe" --version
-=======
     platform_windows:
         executor:
             name: windows/default
 
         steps:
             - checkout
->>>>>>> upstream/main
 
             # Setup
             - run:
@@ -152,55 +107,14 @@ jobs:
                   environment:
                       CARGO_NET_GIT_FETCH_WITH_CLI: "true"
 
-<<<<<<< HEAD
-  platform_android:
-    docker:
-      - image: androidsdk/android-30
-=======
             # Upload Artifacts
             - store_artifacts:
                   path: target/release/platform_windows.exe
->>>>>>> upstream/main
 
     platform_android:
         docker:
             - image: androidsdk/android-30
 
-<<<<<<< HEAD
-      # Setup
-      - run:
-          name: Install GCC
-          command: apt-get update && apt-get install -y gcc
-      - run:
-          name: Install Android SDKs, NDKs and tools
-          command: sdkmanager 'platforms;android-30' 'platform-tools' 'ndk;24.0.8215888' 'build-tools;33.0.0'
-      - run:
-          name: Install Rust
-          command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
-      - run: source $HOME/.cargo/env && cargo --version
-      - run:
-          name: Install Rust targets
-          command: source $HOME/.cargo/env && rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
-      - run:
-          name: Install cargo-apk
-          command: source $HOME/.cargo/env && cargo install cargo-apk
-
-      # KeyStore Setup
-      - run:
-          name: Generate Debug KeyStore
-          command: cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore debug.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
-      - run:
-          name: Generate Release KeyStore
-          command: cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
-
-      # Build
-      - run:
-          name: Build (debug)
-          command: unset ANDROID_HOME && export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/24.0.8215888" && source $HOME/.cargo/env && cargo apk build --package platform_android
-      - run:
-          name: Build (release)
-          command: unset ANDROID_HOME && export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/24.0.8215888" && source $HOME/.cargo/env && cargo apk build --package platform_android --release
-=======
         steps:
             - checkout
 
@@ -221,7 +135,6 @@ jobs:
             - run:
                   name: Install cargo-apk
                   command: source $HOME/.cargo/env && cargo install cargo-apk
->>>>>>> upstream/main
 
             # KeyStore Setup
             - run:
@@ -235,35 +148,9 @@ jobs:
 
             # There are no tests we can run on android like this
 
-<<<<<<< HEAD
-    steps:
-      - checkout
-
-      # Setup
-      - run:
-          name: Install Brew
-          command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - run:
-          name: Install XCodeGen
-          command: brew install xcodegen
-      - run:
-          name: Install JQ
-          command: brew install jq
-      - run:
-          name: Install Rust
-          command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
-      - run:
-          name: Install Rust targets
-          command: rustup target add x86_64-apple-ios aarch64-apple-ios aarch64-apple-ios-sim
-      - run:
-          name: Install Cargo-XCodeBuild
-          command: cargo install cargo-xcodebuild
-      - run: cargo --version
-=======
             # Upload Artifacts
             - store_artifacts:
                   path: target/release/apk/
->>>>>>> upstream/main
 
     platform_ios:
         macos:
@@ -293,17 +180,6 @@ jobs:
                   command: cargo install cargo-xcodebuild
             - run: cargo --version
 
-<<<<<<< HEAD
-      # Upload Artifacts
-      - store_artifacts:
-          path: target/xcodegen/platform_ios/build/Build/Products/Debug-iphonesimulator
-      - store_artifacts:
-          path: target/xcodegen/platform_ios/build/Build/Products/Release-iphonesimulator
-
-  platform_webassembly:
-    docker:
-      - image: cimg/rust:1.70
-=======
             - run:
                   name: Copy original Cargo.toml
                   command: cp platform/ios/Cargo.toml platform/ios/Cargo.toml.original
@@ -319,22 +195,13 @@ jobs:
             - run:
                   name: Diff changes in Cargo.toml
                   command: diff platform/ios/Cargo.toml platform/ios/Cargo.toml.original || true
->>>>>>> upstream/main
 
             # Build
             - run:
                   name: Build
                   command: cargo xcodebuild build --package platform_ios --release
 
-<<<<<<< HEAD
-      # Setup
-      - run:
-          name: Install WASM-Pack
-          command: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-      - run: wasm-pack --version
-=======
             # There are no tests we can run on android like this
->>>>>>> upstream/main
 
             # Upload Artifacts
             - store_artifacts:
@@ -344,16 +211,9 @@ jobs:
         docker:
             - image: cimg/rust:1.70
 
-<<<<<<< HEAD
-      # Tests
-      - run:
-          name: Run Tests
-          command: wasm-pack test --node platform/webassembly/ --package platform_webassembly
-=======
         steps:
             - checkout
             - run: cargo --version
->>>>>>> upstream/main
 
             # Setup
             - run:
@@ -361,18 +221,10 @@ jobs:
                   command: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
             - run: wasm-pack --version
 
-<<<<<<< HEAD
-    steps:
-      - checkout
-      - run: cargo --version
-        
-      - run: sudo apt-get update && sudo apt-get install -y libfontconfig1-dev
-=======
             # Build
             - run:
                   name: Build
                   command: wasm-pack build platform/webassembly/ --package platform_webassembly
->>>>>>> upstream/main
 
             # Upload
             - store_artifacts:

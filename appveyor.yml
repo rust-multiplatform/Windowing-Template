@@ -8,9 +8,4 @@ build_script:
   - sh: cargo build --release
 
 after_build:
-<<<<<<< HEAD
-  - sh: cargo test --no-default-features
-  - sh: cargo test --no-default-features --release
-=======
   - sh: cargo test --release
->>>>>>> upstream/main

@@ -43,22 +43,7 @@ object Build : BuildType({
 
     steps {
         step {
-<<<<<<< HEAD
-            name = "Build (Debug)"
-            type = "cargo"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            param("cargo-build-package", "platform_linux")
-            param("cargo-toolchain", "stable")
-            param("cargo-verbosity", "--verbose")
-            param("cargo-bench-package", "platform_linux")
-            param("cargo-build-no-default-features", "true")
-            param("cargo-command", "build")
-        }
-        step {
-            name = "Build (Release)"
-=======
             name = "Build"
->>>>>>> upstream/main
             type = "cargo"
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             param("cargo-build-package", "platform_linux")
