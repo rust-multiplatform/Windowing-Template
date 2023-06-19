@@ -9,7 +9,7 @@
 version: 2.1
 
 orbs:
-  windows: circleci/windows@5.0.0
+    windows: circleci/windows@5.0.0
 
 workflows:
     build:
@@ -31,15 +31,10 @@ jobs:
             - checkout
             - run: cargo --version
 
-      - run: sudo apt-get update && sudo apt-get install -y libfontconfig1-dev
-
-      # Build
-      - run:
-          name: Build (debug)
-          command: cargo build --package platform_linux
-      - run:
-          name: Build (release)
-          command: cargo build --package platform_linux --release
+            # Build
+            - run:
+                  name: Build
+                  command: cargo build --package platform_linux --release
 
             # Tests
             - run:
@@ -57,11 +52,11 @@ jobs:
         steps:
             - checkout
 
-      # Setup
-      - run:
-          name: Install Rust
-          command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
-      - run: cargo --version
+            # Setup
+            - run:
+                  name: Install Rust
+                  command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
+            - run: cargo --version
 
             # Build
             - run:
@@ -77,24 +72,12 @@ jobs:
             - store_artifacts:
                   path: target/release/platform_macos
 
-  platform_windows:
-    executor:
-      name: windows/default
+    platform_windows:
+        executor:
+            name: windows/default
 
-    steps:
-      - checkout
-
-      # Setup
-      - run:
-          name: Download RustUp
-          command: Invoke-WebRequest https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe -OutFile rustup-init.exe
-      - run:
-          name: Install Rust
-          command: ./rustup-init.exe --default-toolchain stable --profile complete -y
-      - run:
-          name: Cargo version
-          command: |
-            & "$HOME/.cargo/bin/cargo.exe" --version
+        steps:
+            - checkout
 
             # Setup
             - run:
@@ -124,47 +107,34 @@ jobs:
                   environment:
                       CARGO_NET_GIT_FETCH_WITH_CLI: "true"
 
-  platform_android:
-    docker:
-      - image: androidsdk/android-30
+            # Upload Artifacts
+            - store_artifacts:
+                  path: target/release/platform_windows.exe
 
     platform_android:
         docker:
             - image: androidsdk/android-30
 
-      # Setup
-      - run:
-          name: Install GCC
-          command: apt-get update && apt-get install -y gcc
-      - run:
-          name: Install Android SDKs, NDKs and tools
-          command: sdkmanager 'platforms;android-30' 'platform-tools' 'ndk;24.0.8215888' 'build-tools;33.0.0'
-      - run:
-          name: Install Rust
-          command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
-      - run: source $HOME/.cargo/env && cargo --version
-      - run:
-          name: Install Rust targets
-          command: source $HOME/.cargo/env && rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
-      - run:
-          name: Install cargo-apk
-          command: source $HOME/.cargo/env && cargo install cargo-apk
+        steps:
+            - checkout
 
-      # KeyStore Setup
-      - run:
-          name: Generate Debug KeyStore
-          command: cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore debug.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
-      - run:
-          name: Generate Release KeyStore
-          command: cd platform/android/.android && echo -e "android\nandroid\n\n\n\n\n\n\nyes" | keytool -genkey -v -keystore release.keystore -alias release -keyalg RSA -keysize 2048 -validity 10000
-
-      # Build
-      - run:
-          name: Build (debug)
-          command: unset ANDROID_HOME && export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/24.0.8215888" && source $HOME/.cargo/env && cargo apk build --package platform_android
-      - run:
-          name: Build (release)
-          command: unset ANDROID_HOME && export ANDROID_NDK_ROOT="$ANDROID_SDK_ROOT/ndk/24.0.8215888" && source $HOME/.cargo/env && cargo apk build --package platform_android --release
+            # Setup
+            - run:
+                  name: Install GCC
+                  command: apt-get update && apt-get install -y gcc
+            - run:
+                  name: Install Android SDKs, NDKs and tools
+                  command: sdkmanager 'platforms;android-30' 'platform-tools' 'ndk;24.0.8215888' 'build-tools;33.0.0'
+            - run:
+                  name: Install Rust
+                  command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
+            - run: source $HOME/.cargo/env && cargo --version
+            - run:
+                  name: Install Rust targets
+                  command: source $HOME/.cargo/env && rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android
+            - run:
+                  name: Install cargo-apk
+                  command: source $HOME/.cargo/env && cargo install cargo-apk
 
             # KeyStore Setup
             - run:
@@ -178,29 +148,9 @@ jobs:
 
             # There are no tests we can run on android like this
 
-    steps:
-      - checkout
-
-      # Setup
-      - run:
-          name: Install Brew
-          command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - run:
-          name: Install XCodeGen
-          command: brew install xcodegen
-      - run:
-          name: Install JQ
-          command: brew install jq
-      - run:
-          name: Install Rust
-          command: curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable --profile complete -y
-      - run:
-          name: Install Rust targets
-          command: rustup target add x86_64-apple-ios aarch64-apple-ios aarch64-apple-ios-sim
-      - run:
-          name: Install Cargo-XCodeBuild
-          command: cargo install cargo-xcodebuild
-      - run: cargo --version
+            # Upload Artifacts
+            - store_artifacts:
+                  path: target/release/apk/
 
     platform_ios:
         macos:
@@ -230,26 +180,28 @@ jobs:
                   command: cargo install cargo-xcodebuild
             - run: cargo --version
 
-      # Upload Artifacts
-      - store_artifacts:
-          path: target/xcodegen/platform_ios/build/Build/Products/Debug-iphonesimulator
-      - store_artifacts:
-          path: target/xcodegen/platform_ios/build/Build/Products/Release-iphonesimulator
-
-  platform_webassembly:
-    docker:
-      - image: cimg/rust:1.70
+            - run:
+                  name: Copy original Cargo.toml
+                  command: cp platform/ios/Cargo.toml platform/ios/Cargo.toml.original
+            - run:
+                  name: Available Device IDs
+                  command: xcrun simctl list devices available --json ios | jq '.devices | to_entries | map(select(.key | match(".*iOS.*"))) | map(.value)[0]'
+            - run:
+                  name: Selected Device ID
+                  command: xcrun simctl list devices available --json ios | jq '.devices | to_entries | map(select(.key | match(".*iOS.*"))) | map(.value)[0][0]'
+            - run:
+                  name: Change Device ID
+                  command: DEVICE_ID=$(xcrun simctl list devices available --json ios | jq '.devices | to_entries | map(select(.key | match(".*iOS.*"))) | map(.value)[0][0].udid'); cat platform/ios/Cargo.toml | sed "s/device_id = .*/device_id = $DEVICE_ID/g" | tee platform/ios/Cargo.toml
+            - run:
+                  name: Diff changes in Cargo.toml
+                  command: diff platform/ios/Cargo.toml platform/ios/Cargo.toml.original || true
 
             # Build
             - run:
                   name: Build
                   command: cargo xcodebuild build --package platform_ios --release
 
-      # Setup
-      - run:
-          name: Install WASM-Pack
-          command: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-      - run: wasm-pack --version
+            # There are no tests we can run on android like this
 
             # Upload Artifacts
             - store_artifacts:
@@ -259,10 +211,9 @@ jobs:
         docker:
             - image: cimg/rust:1.70
 
-      # Tests
-      - run:
-          name: Run Tests
-          command: wasm-pack test --node platform/webassembly/ --package platform_webassembly
+        steps:
+            - checkout
+            - run: cargo --version
 
             # Setup
             - run:
@@ -270,11 +221,10 @@ jobs:
                   command: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
             - run: wasm-pack --version
 
-    steps:
-      - checkout
-      - run: cargo --version
-        
-      - run: sudo apt-get update && sudo apt-get install -y libfontconfig1-dev
+            # Build
+            - run:
+                  name: Build
+                  command: wasm-pack build platform/webassembly/ --package platform_webassembly
 
             # Upload
             - store_artifacts:
