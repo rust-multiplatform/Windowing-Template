@@ -15,3 +15,4 @@ all-tests = ["ui-tests"]
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
+winit = "0.28"
